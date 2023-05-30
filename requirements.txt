@@ -1,0 +1,11 @@
+dvc
+dvc_s3
+mlflow
+jupyter
+scikit-learn
+pandas
+seaborn
+hyperopt
+xgboost
+optuna
+fastparquet
