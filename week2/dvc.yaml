@@ -1,0 +1,21 @@
+stages:
+  train_baseline:
+    cmd: python src/models/train.py --data_path data/processed --model_path models/random_forest_baseline.bin
+    deps:
+    - data/processed
+    - src/models/train.py
+    outs:
+    - models/random_forest_baseline.bin
+  train_hpo:
+    cmd: python src/models/hpo.py --data_path data/processed --model_path models/random_forest_hpo.bin
+    deps:
+    - data/processed
+    - src/models/hpo.py
+    outs:
+    - models/random_forest_hpo.bin
+  register_model:
+    cmd: python src/models/register_model.py --data_path data/processed
+    deps:
+    - data/processed
+    - models/random_forest_hpo.bin
+    - src/models/register_model.py

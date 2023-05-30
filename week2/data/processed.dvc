@@ -1,0 +1,11 @@
+cmd: python src/data/preprocess_data.py --raw_data_path data/raw --dest_path data/processed
+deps:
+- path: data/raw
+- path: src/data/preprocess_data.py
+outs:
+- md5: 135f447f0edbf5bd2e01a3cb6944c13a.dir
+  size: 7269033
+  nfiles: 4
+  path: data/processed
+  persist: true
+wdir: ..
