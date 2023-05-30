@@ -1,0 +1,9 @@
+cmd: echo "This is the model training stage" >&2 && exit 1
+deps:
+- md5: 371ccf7cfb0ee5cd7d7b6c55425a90f6.dir
+  path: data/processed
+outs:
+- md5: aa91cf804c06f0dde3daaecb7c90653a.dir
+  size: 4476
+  nfiles: 1
+  path: models
