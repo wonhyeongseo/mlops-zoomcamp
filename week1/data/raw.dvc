@@ -1,0 +1,9 @@
+outs:
+- md5: e6ddeadb9cec5c5c3cb1b67701642011.dir
+  size: 83756461
+  nfiles: 2
+  path: data/raw
+  cache: true
+  metric: false
+  persist: false
+wdir: ..
