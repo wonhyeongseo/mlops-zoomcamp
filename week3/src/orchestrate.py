@@ -1,4 +1,6 @@
 import os
+import sys
+
 import pathlib
 import pickle
 import pandas as pd
@@ -9,7 +11,7 @@ from sklearn.feature_extraction import DictVectorizer
 from sklearn.metrics import mean_squared_error
 import mlflow
 import xgboost as xgb
-from prefect import flow, task
+from prefect import flow, task, artifacts
 
 
 @task(retries=3, retry_delay_seconds=2, name="Read taxi data")
@@ -100,6 +102,7 @@ def train_best_model(
         y_pred = booster.predict(valid)
         rmse = mean_squared_error(y_val, y_pred, squared=False)
         mlflow.log_metric("rmse", rmse)
+        artifacts.create_markdown_artifact(f"Validation RMSE: {rmse}", 'rmse')
 
         pathlib.Path("models").mkdir(exist_ok=True)
         with open("models/preprocessor.b", "wb") as f_out:
@@ -133,4 +136,4 @@ def main_flow(
 
 
 if __name__ == "__main__":
-    main_flow()
+    main_flow(sys.argv[1], sys.argv[2])
