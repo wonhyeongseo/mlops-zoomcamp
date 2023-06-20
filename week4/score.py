@@ -51,7 +51,7 @@ def score(year: int, month: int):
 
     df_result = pd.DataFrame({'ride_id': df['ride_id'], 'predicted_duration': y_pred})
 
-    output_file = 'data/{year:04d}-{month:02d}-predictions.parquet'
+    output_file = f'data/{year:04d}-{month:02d}-predictions.parquet'
     df_result.to_parquet(
         output_file,
         engine='pyarrow',
